@@ -18,7 +18,7 @@ const settings = definePluginSettings({
 export default definePlugin({
     name: "ExactTimestamps",
     description: "Shows exact message timestamps including seconds.",
-    authors: [{ name: "hashy143", id: 0n }],
+    authors: [{ name: "hashy143", id: 1213486034071982092n }],
     settings,
 
     patches: [
@@ -38,7 +38,7 @@ export default definePlugin({
     cozy(date: Date, text: string) {
         if (!settings.store.showSeconds) return text;
         const ss = String(date.getSeconds()).padStart(2, "0");
-        return text.replace(/(\d{1,2}[:.]\d{2})(?!\d)/, `$1:${ss}`);
+        return text.replace(/(\d{1,2}[:.]\d{2})(?!.*\d[:.]\d{2})/, `$1:${ss}`);
     }
 });
 
